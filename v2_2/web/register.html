@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+    <script type="text/javascript"  src="js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <style>
+        #div1 {
+            background-color: steelblue;
+            height: 80px;
+            color: white;
+            text-align: center;
+        }
+        span{
+            font-size: 15px;
+            color: red;
+        }
+        form {
+            height: auto;
+            margin-left: 20%;
+            margin-top: 10%;
+        }
+
+        #button{
+            padding-left: 30%;
+        }
+    </style>
+    <script>
+        $(function(){
+            $("#username").focus();
+        });
+        function validation(){
+            var flag=true;
+            var username=$("#username").val().trim();
+            var account=$("#account").val().trim();
+            var phone=$("#phone").val().trim();
+            var passwd=$("#passwd").val().trim();
+            var re_passwd=$("#re_passwd").val().trim();
+            //验证姓名
+            if(username.length<=0){
+                $("#username").focus();
+                $("#username_id").html("姓名不能为空");
+                return false;
+            }else{
+                $("#username_id").html("");
+            }
+
+            //账号名
+            if(account.length<6){
+                $("#account_id").html("账号名至少6位字符");
+                return false;
+
+            }else{
+                $("#account_id").html("");
+            }
+
+            //身份证号
+            if(cardId.length<=0){
+                $("#cardId_id").html("身份证号不能为空");
+                return false;
+            }else if(cardId.length<18||cardId.length>18){
+                $("#cardId_id").html("输入身份证号错误");
+                return false;
+            }else{
+                $("#cardId_id").html("");
+            }
+
+            //手机号
+            if(phone.length<=0){
+                $("#phone_id").html("手机号不能为空");
+                return false;
+            }else if(phone.length<11||phone.length>11){
+                $("#phone_id").html("输入手机号错误");
+                return false;
+            }else{
+                $("#phone_id").html("");
+
+            }
+
+            //密码
+            if(passwd.length<=0){
+                $("#passwd_id").html("请输入密码");
+                return false;
+            }else if(passwd.length<6||passwd.length>18){
+                $("#passwd_id").html("密码不可少于6位数，不大于18位数");
+                return false;
+            }else{
+                $("#passwd_id").html("");
+
+            }
+
+            //验证密码
+            if(!(passwd==re_passwd)){
+                $("#re_passwd_id").html("两次密码不一样");
+                return false;
+            }else{
+                $("#re_passwd_id").html("");
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="div1" class="form-control">
+    <h1>欢迎注册ATM账户！</h1>
+</div>
+<form class="form-horizontal" action="/account.do" onsubmit="return validation()">
+    <div class="form-group">
+        <label for="username" class="col-sm-2 control-label">姓名</label>
+        <div class="col-sm-4">
+            <input class="form-control" id="username" name="username" placeholder="姓名" />
+        </div>
+        <div class="col-sm-6">
+            <span id="username_id"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="account" class="col-sm-2 control-label">账号名</label>
+        <div class="col-sm-4">
+            <input class="form-control" id="account" name="account" placeholder="账号名不可超过6未字符" />
+        </div>
+        <div class="col-sm-6">
+            <span id="account_id"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="cardId" class="col-sm-2 control-label">身份证号</label>
+        <div class="col-sm-4">
+            <input class="form-control" id="cardId" name="cardId" placeholder="请输入身份证号" />
+        </div>
+        <div class="col-sm-6">
+            <span id="cardId_id"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="phone" class="col-sm-2 control-label">手机号</label>
+        <div class="col-sm-4">
+            <input class="form-control" id="phone" name="phone" placeholder="请输入手机号" />
+        </div>
+        <div class="col-sm-6">
+            <span id="phone_id"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="passwd" class="col-sm-2 control-label">密码</label>
+        <div class="col-sm-4">
+            <input class="form-control" id="passwd" name="passwd" placeholder="密码不少于6位字符" type="password" />
+        </div>
+        <div class="col-sm-6">
+            <span id="passwd_id"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="re_passwd" class="col-sm-2 control-label">确认密码</label>
+        <div class="col-sm-4">
+            <input class="form-control" id="re_passwd" name="re_passwd" placeholder="请确认密码" type="password" />
+        </div>
+        <div class="col-sm-6">
+            <span id="re_passwd_id"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-10" id="button">
+            <button class="btn btn-primary" type="submit">提交</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

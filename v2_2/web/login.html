@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script type="text/javascript"  src="js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/login.css"/>
+
+    <script>
+        $(function(){
+            $("#card").hide();
+            //验证登录
+            $("#login").click(function(){
+                return Login();
+            });
+        });
+
+        function Login(){
+            $.ajax({
+                url:"../login.do",
+                type:"post",
+                data:JSON.stringify({"phone":$('#phone').val().trim(), "passwd":$('#passwd').val().trim()}),
+                contentType : "application/json;charset=UTF-8",
+                success:function(data) {
+                    $("#main").html($("#card").html());
+                    var option=eval("("+data+")");
+                    $.each(option,function (i,n) {
+                        $("#cardId").append("<option value='"+n+"'>"+n+"</option>");
+                    });
+                }
+            });
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <div id="main">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <span id="node"></span>
+            </div>
+            <!--用户名框-->
+            <div class="form-group">
+                 <div class="input-group col-sm-8">
+						<span class="input-group-addon" id="basic-addon1">
+							<span class="glyphicon glyphicon-user"></span>
+						</span>
+                <input id="phone" name="phone" type="text" class="form-control" placeholder="请输入用户名" aria-describedby="basic-addon1"
+                       required autocomplete='tel' />
+                </div>
+            </div>
+            <!--密码框-->
+            <div class="form-group">
+                <div class="input-group col-sm-8">
+						<span class="input-group-addon" id="basic-addon2">
+							<span class="glyphicon glyphicon-lock"></span>
+						</span>
+                <input type="password" id="passwd" name="passwd" class="form-control" placeholder="请输入密码" aria-describedby="basic-addon2"
+                       required autocomplete='tel' />
+                </div>
+             </div>
+
+            <!--忘记密码框-->
+            <div class="form-group">
+                <div class="col-sm-8">
+                    <a href="Forget_passwd.html" id="forget">忘记密码</a>
+                 </div>
+             </div>
+
+            <!--登录注册-->
+            <div class="form-group">
+                 <div class="col-sm-2">
+                    <input type="button" value="登录" class="btn btn-primary" id="login" />
+                 </div>
+                 <div class="col-sm-2">
+                    <button id="register" class="btn btn-primary"><a href="register.html" id="Aregister">注册</a></button>
+                 </div>
+            </div>
+        </form>
+        <div id="card">
+            <h2>登录成功！</h2>
+            <form class="form-horizontal" action="/jump.do" method="post" >
+                <div class="form-group col-sm-12">
+                    <span style="font-size: 18px;font-weight: bold;width: 200px;">请选择银行卡账号</span>
+                </div>
+                <div class="form-group col-sm-8">
+                     <select class="form-control" id="cardId" name="cardId"></select>
+                </div>
+                <div class="form-group col-sm-10" style="padding-left: 25%;">
+                     <button type="submit" class="btn btn-primary">确认</button>
+                </div>
+             </form>
+         </div>
+     </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+#operation {
+	border: 10px solid ghostwhite;
+	position: absolute;
+	width: 60%;
+	top: 5%;
+	height: auto;
+	margin-left: 20%;
+	border-style: groove;
+	
+}
+form{
+	magin-top:4%;
+}
+button {
+	background-color: white;
+	border-radius: 25px;
+	text-align: center;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#choice {
+	margin-top: 5%;
+	text-align: center;
+}
+
+.form-group {
+	height: 80px;
+}
+
+#node {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#right {
+	margin-left: 20%;
+}
+a{
+	color: black;
+	font-weight: bold;
+}

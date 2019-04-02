@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forget password</title>
+    <script type="text/javascript"  src="js/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <style>
+        #div1 {
+            background-color: steelblue;
+            height: 80px;
+            color: white;
+            text-align: center;
+        }
+        span{
+            font-size: 15px;
+            color: red;
+        }
+        form {
+            height: auto;
+            margin-left: 20%;
+            margin-top: 10%;
+        }
+
+        #button{
+            padding-left: 30%;
+        }
+    </style>
+    <script>
+        $(function(){
+            $("#passwd").focus();
+        });
+        function validation(){
+            var flag=true;
+            var new_passwd=$("#new_passwd").val().trim();
+            var re_passwd=$("#re_passwd").val().trim();
+
+            //新密码
+            if(new_passwd.length<=0){
+                $("#new_passwd_id").html("请输入新密码");
+                return false;
+            }else if(new_passwd.length<6||new_passwd.length>18){
+                $("#new_passwd_id").html("密码不可少于6位数，不大于18位数");
+                return false;
+            }else{
+                $("#new_passwd_id").html("");
+            }
+
+            //验证密码
+            if(!(new_passwd==re_passwd)){
+                $("#re_passwd_id").html("两次密码不一样");
+                return false;
+            }else{
+                $("#re_passwd_id").html("");
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="div1" class="form-control">
+
+</div>
+<form class="form-horizontal" action="" onsubmit="return validation()">
+
+    <div class="form-group">
+        <label for="new_passwd" class="col-sm-2 control-label">重置密码</label>
+        <div class="col-sm-4">
+            <input class="form-control" id="new_passwd" name="new_passwd" placeholder="密码不少于6位字符" type="password" />
+        </div>
+        <div class="col-sm-6">
+            <span id="new_passwd_id"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="re_passwd" class="col-sm-2 control-label">再次确认密码</label>
+        <div class="col-sm-4">
+            <input class="form-control" id="re_passwd" name="re_passwd" placeholder="请确认密码" type="password" />
+        </div>
+        <div class="col-sm-6">
+            <span id="re_passwd_id"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-10" id="button">
+            <button class="btn btn-primary" type="submit" id="reset">重置</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

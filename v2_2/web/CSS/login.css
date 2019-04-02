@@ -1,0 +1,51 @@
+
+body {
+	
+	
+	width: 100%;
+	background: rgba(0, 0, 0, 0.05);
+}
+
+#title {
+	position: absolute;
+	left: 40%;
+	top: 20%;
+	font-weight: bolder;
+	font-size: 25px;
+}
+.col-sm-3 {
+	text-align: right;
+	text-decoration: underline;
+}
+.col-sm-8 {
+	text-align: right;
+	text-decoration: underline;
+}
+.col-sm-1 {
+	margin-left: 2%;
+}
+.col-sm-2 {
+	margin-left: 10%;
+}
+#node{
+	color: red;
+	font-size: 15px;
+}
+#Aregister{
+	color: white;
+
+}
+#main{
+	/*background-color: slategray;*/
+	
+	position: absolute;
+	border: 1px solid grey;
+	width: 30%;
+	left: 30%;
+	top: 20%;
+	height: auto;
+	padding-left: 5%;
+	padding-top: 3%;
+	padding-bottom: 3%;
+
+}

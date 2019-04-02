@@ -1,0 +1,35 @@
+#operation {
+				border: 10px solid ghostwhite;
+				position: absolute;
+				width: 60%;
+				top: 10%;
+				height: auto;
+				margin-left: 25%;
+				border-style: groove;
+				/*padding-bottom: 15%;*/
+			}
+
+			.form-horizontal {
+				margin-top: 10%;
+			}
+			.balance {
+				font-size: 18px;
+				font-weight: bold;
+			}
+
+			.col-sm-12 {
+				text-align: center;
+			}
+			.col-sm-9{
+				/*margin-left:15% ;*/
+				text-align: right;
+				margin-top: 25%;
+				margin-bottom:2% ;
+			}
+			.col-sm-3{
+				margin-top: 25%;
+				margin-bottom:2% ;
+			}
+			#return{
+				cursor: pointer;
+			}
